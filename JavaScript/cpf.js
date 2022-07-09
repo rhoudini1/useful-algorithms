@@ -50,7 +50,7 @@ function geraDigitosAleatorios(qtde) {
   return digitos;
 }
 
-console.log(calculaCPF("707529474"));
-console.log(validaCPF("70652947419"));
+console.log(calculaCPF("123456789"));
+console.log(validaCPF("12345678109"));
 console.log(geraDigitosAleatorios(9));
 console.log(geraNovoCPF());
