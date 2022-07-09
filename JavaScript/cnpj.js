@@ -13,6 +13,18 @@ function calculaCNPJ(digitos) {
   return cnpj;
 }
 
+function validaCNPJ(cnpj) {
+  if (cnpj.length != 14) {
+    throw new Error("Insira 14 digitos.");
+  }
+  const arrayDeNums = cnpj.slice(0, 12).split("");
+  arrayDeNums.push(calculaDigito(arrayDeNums));
+  arrayDeNums.push(calculaDigito(arrayDeNums));
+  const cnpjCalculado = arrayDeNums.join("");
+  const cnpjEhValido = cnpjCalculado === cnpj;
+  return cnpjEhValido;
+}
+
 // FUNÇÕES AUXILIARES
 function calculaDigito(arrayDeNums) {
   let soma = 0;
@@ -32,3 +44,4 @@ function calculaDigito(arrayDeNums) {
 
 // Testes
 console.log(calculaCNPJ("397717260001"));
+console.log(validaCNPJ("39771726000163"));
