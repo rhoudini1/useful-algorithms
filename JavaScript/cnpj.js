@@ -25,6 +25,11 @@ function validaCNPJ(cnpj) {
   return cnpjEhValido;
 }
 
+function geraNovoCNPJ() {
+  const digitos = geraDigitosAleatorios(8) + "0001";
+  return calculaCNPJ(digitos);
+}
+
 // FUNÇÕES AUXILIARES
 function calculaDigito(arrayDeNums) {
   let soma = 0;
@@ -42,6 +47,17 @@ function calculaDigito(arrayDeNums) {
   return resto < 2 ? 0 : 11 - resto;
 }
 
+function geraDigitosAleatorios(qtde) {
+  let digitos = "";
+  for (let i = 0; i < qtde; i++) {
+    const digito = Math.floor(Math.random() * 10);
+    digitos += digito.toString();
+  }
+  return digitos;
+}
+
 // Testes
 console.log(calculaCNPJ("397717260001"));
 console.log(validaCNPJ("39771726000163"));
+console.log(geraNovoCNPJ());
+console.log(validaCNPJ(geraNovoCNPJ())); // Sempre true
